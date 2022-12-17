@@ -7,6 +7,7 @@ package main;
 import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import util.FileUtility;
 
 /**
  *
@@ -14,10 +15,13 @@ import java.net.Socket;
  */
 public class TCPClient {
     public static void main(String[] args) throws Exception{
-        Socket socket = new Socket("localhost",6789);
+        Socket socket = new Socket("192.168.0.110",5678);
         OutputStream outputStream = socket.getOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-        outputStream.write("Salam Server, necesen?".getBytes());
+        
+        byte[] bytes = FileUtility.readBytes("C:\\SekilBMW\\bmw.jpg");
+        dataOutputStream.writeInt(bytes.length);
+        dataOutputStream.write(bytes);
         socket.close();
     }
 }
