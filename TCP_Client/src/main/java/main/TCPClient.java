@@ -15,7 +15,7 @@ import util.FileUtility;
  */
 public class TCPClient {
     public static void main(String[] args) throws Exception{
-        Socket socket = new Socket("192.168.0.110",5678);
+        Socket socket = new Socket("127.0.0.1",5678);
         OutputStream outputStream = socket.getOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
         
